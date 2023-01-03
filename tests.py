@@ -6,6 +6,8 @@ from .views import home_page
 
 # Create your tests here.
 class TasksPage(TestCase):
+
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/tasks/')
         self.assertEqual(found.func, home_page)
+
