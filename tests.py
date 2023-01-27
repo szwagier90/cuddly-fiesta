@@ -16,3 +16,7 @@ class TasksPage(TestCase):
         response = self.client.get('/tasks/')
         html = response.content.decode('utf8')
         self.assertTemplateUsed(response, 'tasks/home.html')
+
+    def test_can_save_a_POST_request(self):
+        response = self.client.post('/tasks/', data={'task_name': "SimpleTask"})
+        self.assertIn("SimpleTask", response.content.decode())
