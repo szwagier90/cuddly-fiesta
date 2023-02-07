@@ -8,6 +8,8 @@
             <input name="task_name" id="id_new_task" placeholder="New task: "/>
             {% csrf_token %}
         </form>
-        <table id="id_task_table"></table>
+        <table id="id_task_table">
+            <tr><td>{{ new_task_name }}</td></tr>
+        </table>
     </body>
 </html>

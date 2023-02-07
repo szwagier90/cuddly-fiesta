@@ -20,3 +20,4 @@ class TasksPage(TestCase):
     def test_can_save_a_POST_request(self):
         response = self.client.post('/tasks/', data={'task_name': 'A new task'})
         self.assertIn('A new task', response.content.decode())
+        self.assertTemplateUsed(response, 'tasks/home.html')
