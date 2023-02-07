@@ -4,6 +4,10 @@
     </head>
     <body>
         <h1>Task management</h1>
-        <input name="task_name" id="id_new_task" placeholder="New task: "/>
+        <form method='POST'>
+            <input name="task_name" id="id_new_task" placeholder="New task: "/>
+            {% csrf_token %}
+        </form>
+        <table id="id_task_table"></table>
     </body>
 </html>
