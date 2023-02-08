@@ -5,6 +5,9 @@ from django.urls import resolve
 
 from .views import home_page
 
+from .models import Task
+
+
 # Create your tests here.
 class TasksPage(TestCase):
 
@@ -21,3 +24,23 @@ class TasksPage(TestCase):
         response = self.client.post('/tasks/', data={'task_name': 'A new task'})
         self.assertIn('A new task', response.content.decode())
         self.assertTemplateUsed(response, 'tasks/home.html')
+
+
+class TaskModelTest(TestCase):
+    def test_saving_and_retrieving_tasks(self):
+        first_task = Task()
+        first_task.name = '1st task'
+        first_task.save()
+
+        second_task = Task()
+        second_task.name = '2nd task'
+        second_task.save()
+
+        saved_tasks = Task.objects.all()
+        self.assertEqual(saved_tasks.count(), 2)
+
+        first_saved_task = saved_tasks[0]
+        second_saved_tasks = saved_tasks[1]
+
+        self.assertEqual(first_saved_task.name, '1st task')
+        self.assertEqual(second_saved_tasks.name, '2nd task')
