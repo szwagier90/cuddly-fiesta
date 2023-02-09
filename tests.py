@@ -27,8 +27,8 @@ class TasksPage(TestCase):
         new_task = Task.objects.first()
         self.assertEqual(new_task.name, 'A new task')
 
-        self.assertIn('A new task', response.content.decode())
-        self.assertTemplateUsed(response, 'tasks/home.html')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response['location'], '/tasks/')
 
     def test_only_saves_tasks_when_necessary(self):
         self.client.get('/tasks/')
