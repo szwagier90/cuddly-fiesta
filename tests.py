@@ -27,6 +27,9 @@ class TasksPage(TestCase):
         new_task = Task.objects.first()
         self.assertEqual(new_task.name, 'A new task')
 
+    def test_redirects_after_POST(self):
+        response = self.client.post('/tasks/', data={'task_name': 'A new task'})
+
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response['location'], '/tasks/')
 
