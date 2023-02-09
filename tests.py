@@ -30,6 +30,10 @@ class TasksPage(TestCase):
         self.assertIn('A new task', response.content.decode())
         self.assertTemplateUsed(response, 'tasks/home.html')
 
+    def test_only_saves_tasks_when_necessary(self):
+        self.client.get('/tasks/')
+        self.assertEqual(Task.objects.count(), 0)
+
 
 class TaskModelTest(TestCase):
     def test_saving_and_retrieving_tasks(self):
