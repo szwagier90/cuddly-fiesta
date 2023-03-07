@@ -31,7 +31,7 @@ class TasksPage(TestCase):
         response = self.client.post('/tasks/', data={'task_name': 'A new task'})
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response['location'], '/tasks/')
+        self.assertEqual(response['location'], '/tasks/first_task_list_url')
 
     def test_only_saves_tasks_when_necessary(self):
         self.client.get('/tasks/')
