@@ -65,3 +65,14 @@ class TaskModelTest(TestCase):
 
         self.assertEqual(first_saved_task.name, '1st task')
         self.assertEqual(second_saved_tasks.name, '2nd task')
+
+
+class TaskViewTest(TestCase):
+    def test_display_all_tasks(self):
+        Task.objects.create(name='1st')
+        Task.objects.create(name='2nd')
+
+        response = self.client.get('/tasks/first_task_list_url')
+
+        self.assertContains(response, '1st')
+        self.assertContains(response, '2nd')

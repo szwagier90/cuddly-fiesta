@@ -9,3 +9,7 @@ def home_page(request):
         return redirect('/tasks/first_task_list_url')
     tasks = Task.objects.all()
     return render(request, 'tasks/home.html', {'tasks': tasks})
+
+def task_list(request):
+    tasks = Task.objects.all()
+    return render(request, 'tasks/home.html', {'tasks': tasks})
