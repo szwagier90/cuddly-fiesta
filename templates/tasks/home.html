@@ -8,10 +8,5 @@
             <input name="task_name" id="id_new_task" placeholder="New task: "/>
             {% csrf_token %}
         </form>
-        <table id="id_task_table">
-            {% for task in tasks %}
-            <tr><td>{{ task.name }}</td></tr>
-            {% endfor %}
-        </table>
     </body>
 </html>
