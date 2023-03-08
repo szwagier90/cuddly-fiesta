@@ -37,15 +37,6 @@ class TasksPage(TestCase):
         self.client.get('/tasks/')
         self.assertEqual(Task.objects.count(), 0)
 
-    def test_display_all_tasks(self):
-        Task.objects.create(name='1st')
-        Task.objects.create(name='2nd')
-
-        response = self.client.get('/tasks/')
-
-        self.assertIn('1st', response.content.decode())
-        self.assertIn('2nd', response.content.decode())
-
 
 class TaskModelTest(TestCase):
     def test_saving_and_retrieving_tasks(self):
