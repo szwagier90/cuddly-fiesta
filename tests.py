@@ -59,6 +59,10 @@ class TaskModelTest(TestCase):
 
 
 class TaskViewTest(TestCase):
+    def test_uses_task_list_template(self):
+        response = self.client.get('/tasks/first_task_list_url')
+        self.assertTemplateUsed(response, 'tasks/tasks.html')
+
     def test_display_all_tasks(self):
         Task.objects.create(name='1st')
         Task.objects.create(name='2nd')

@@ -12,4 +12,4 @@ def home_page(request):
 
 def task_list(request):
     tasks = Task.objects.all()
-    return render(request, 'tasks/home.html', {'tasks': tasks})
+    return render(request, 'tasks/tasks.html', {'tasks': tasks})
